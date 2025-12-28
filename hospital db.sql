@@ -76815,21 +76815,7 @@ FROM
     patients
 GROUP BY
     age_group;
-    
-SELECT
-    YEAR(e.START) AS encounter_year,
-    e.ENCOUNTERCLASS AS encounter_class,
-    COUNT(*) AS encounters_per_class,
-    (COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (PARTITION BY YEAR(e.START))) AS percentage_of_total_encounters
-FROM
-    encounters e
-GROUP BY
-    encounter_year,
-    encounter_class
-ORDER BY
-    encounter_year,
-    encounter_class;
-    
+
     SELECT
     CASE
         WHEN TIMESTAMPDIFF(HOUR, START, STOP) > 24 THEN 'Over 24 Hours'
